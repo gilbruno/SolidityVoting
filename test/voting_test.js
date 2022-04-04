@@ -417,7 +417,6 @@ contract('Voting', accounts => {
             const winningProposalId = await votingInstance.winningProposalID.call({from: owner});
             const winner = proposals.indexOf(Math.max(...proposals));
             expect(new BN(winnerProposalId)).to.be.bignumber.equal(new BN(winner));
-
         });
         
     });    

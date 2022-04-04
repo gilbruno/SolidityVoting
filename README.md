@@ -107,7 +107,9 @@ we wanted to check that it reverts.
 ✔️ Should see the owner can vote without error <br>
 ✔️ Should see the winningProposalID state property is not null anymore <br>
 ✔️ Should see the winningProposalID match the winner <br>
-> For this test we hydrate a set of data and we compute the winnerId in JS 
+> For this test we hydrate a set of data voters, porposals ans votes. 
+Then we are able to compute our winner in Javascript.
+We compare this computed winner with the winner computed with the smart contract
 and compare with the winnerID <br>
 
 ## RUN TESTS
