@@ -147,3 +147,7 @@ truffle test
 ## TEST RESULTS
 
 ✔️ 73 passing tests
+
+## AUTHOR
+
+* Gilles Bruno
