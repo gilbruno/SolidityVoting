@@ -389,8 +389,8 @@ contract('Voting', accounts => {
     describe('TEST TALLIED VOTE', function () {
         /**
         * To test vote process, some conditions are required : 
-        *   - Have some voters in the whitelist (we added 3 voters in the whitelist)
-        *   - Have some proposals in the proposalsliost (we added 5 proposals in the whitelist)
+        *   - Have some voters in the whitelist (we added 5 voters in the whitelist)
+        *   - Have some proposals in the proposals list (we added 3 proposals in the whitelist)
         */
         beforeEach(async function () {
             votingInstance = await addVoters(5);
