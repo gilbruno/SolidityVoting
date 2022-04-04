@@ -48,6 +48,7 @@ There must be a required order for actions.<br>
 That's what we tested.<br>
 The initial process is 'RegisteringVoters'.<br>
 We checked that in case of succes, the event _WorkflowStatusChange_ is emitted
+I added an initial test to check the _public_ visibility of the workflowStatus.
 ### 2) TEST OF THE UNNATURAL WORKFLOW STATUS
 Secondly, we tested an unnatural order of workflowstatus.
 For instance, If the current status at index 2
@@ -77,7 +78,8 @@ we wanted to check that it reverts.
 
 ✔️ Should see that a voter newly created can not vote until the end of the recording voters session <br>
 ✔️ Should see that a voter newly created can not give a proposal until the end of the recording voters session <br>
-
+✔️  Everybody should see the workflowStatus at this stage <br>
+✔️  Everybody should see the winningProposalID at this stage with value 0 <br>
 
 
 ### 5) TEST OF "ADD PROPOSALS" PROCESS
@@ -96,6 +98,9 @@ we wanted to check that it reverts.
 
 ✔️ Should see the workflow status unchanged after adding a proposal ==> So we check that after adding a proposal the workflowstatus is still _ProposalsRegistrationStarted_<br>
 
+✔️ Everybody should see the workflowStatus at this stage <br>
+✔️ Everybody should see the winningProposalID at this stage with value 0 <br>
+
 
 
 ### 6) TEST OF THE "VOTE" PROCESS
@@ -108,6 +113,8 @@ we wanted to check that it reverts.
 ✔️ Should see that the voteCount property of the proposal struct is incremented after the vote <br>
 ✔️ Should see the workflow status unchanged after voting <br>
 ✔️ Should see the owner can not tally votes before ending vote session <br>
+✔️ Everybody should see the workflowStatus at this stage <br>
+✔️ Everybody should see the winningProposalID at this stage with value 0 <br>
 
 ### 7) TEST OF THE "TALLIED VOTE" PROCESS
 ✔️ Should see an event emitted : _WorkflowStatusChange_ to value _VotesTallied_ <br>
@@ -118,6 +125,9 @@ we wanted to check that it reverts.
 Then we are able to compute our winner in Javascript.
 We compare this computed winner with the winner computed with the smart contract
 and compare with the winnerID <br>
+✔️ Everybody should see the workflowStatus at this stage <br>
+✔️ Everybody should see the winner by getting the winningProposalID <br>
+
 
 
 ## RUN TESTS
@@ -136,4 +146,4 @@ truffle test
 
 ## TEST RESULTS
 
-✔️ 64 passing tests
+✔️ 73 passing tests

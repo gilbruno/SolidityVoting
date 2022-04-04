@@ -127,8 +127,14 @@ contract('Voting', accounts => {
         context("--> Test a natural workflow from the initial status 'RegisteringVoters' ", function () {
             before(async function () {
                 votingInstance = await Voting.new({from:owner});
-                let workflowStatus = await votingInstance.workflowStatus.call({from: owner});
+                //let workflowStatus = await votingInstance.workflowStatus.call({from: owner});
             }); 
+            
+            it('Everybody should see the workflowStatus', async function () { 
+                let workflowStatus = await votingInstance.workflowStatus.call({from: NOT_REGISTERED_ADDR});
+                expect(new BN(workflowStatus)).to.be.bignumber.equal(ZERO);
+            });
+    
             for(let i=1; i <workflowStatus.length;i++) {
                 it('should see an event emitted "WorkflowStatusChange" when ' + workflowStatus[i].fName, async function () {
                     const findEvent = await workflowStatus[i].fn();
@@ -249,6 +255,17 @@ contract('Voting', accounts => {
             await addVoters([owner, voter2]);
             await (expectRevert(votingInstance.addProposal(PROPOSAL_1, {from: voter2}), "Proposals are not allowed yet"));
         });
+
+        it('Everybody should see the workflowStatus at this stage', async function () { 
+            let workflowStatus = await votingInstance.workflowStatus.call({from: NOT_REGISTERED_ADDR});
+            expect(new BN(workflowStatus)).to.be.bignumber.equal(ZERO);
+        });
+
+        it('Everybody should see the winningProposalID at this stage with value 0', async function () { 
+            const winningProposalId = await votingInstance.winningProposalID.call({from: NOT_REGISTERED_ADDR});
+            expect(new BN(winnerProposalId)).to.be.bignumber.equal(ZERO);
+        });
+
       });
 
     describe('TEST ADD PROPOSAL', function () {
@@ -317,6 +334,17 @@ contract('Voting', accounts => {
             let workflowStatus = await votingInstance.workflowStatus.call({from: owner});
             expect(new BN(workflowStatus)).to.be.bignumber.equal(ONE);
         });
+
+        it('Everybody should see the workflowStatus at this stage', async function () { 
+            let workflowStatus = await votingInstance.workflowStatus.call({from: NOT_REGISTERED_ADDR});
+            expect(new BN(workflowStatus)).to.be.bignumber.equal(ONE);
+        });
+
+        it('Everybody should see the winningProposalID at this stage with value 0', async function () { 
+            const winningProposalId = await votingInstance.winningProposalID.call({from: NOT_REGISTERED_ADDR});
+            expect(new BN(winnerProposalId)).to.be.bignumber.equal(ZERO);
+        });
+
     });  
 
     describe('TEST VOTE', function () {
@@ -384,6 +412,17 @@ contract('Voting', accounts => {
             await (expectRevert(votingInstance.tallyVotes({from:owner}), "Current status is not voting session ended"));
         });
 
+        it('Everybody should see the workflowStatus at this stage', async function () { 
+            let workflowStatus = await votingInstance.workflowStatus.call({from: NOT_REGISTERED_ADDR});
+            expect(new BN(workflowStatus)).to.be.bignumber.equal(THREE);
+        });
+
+        it('Everybody should see the winningProposalID at this stage with value 0', async function () { 
+            const winningProposalId = await votingInstance.winningProposalID.call({from: NOT_REGISTERED_ADDR});
+            expect(new BN(winnerProposalId)).to.be.bignumber.equal(ZERO);
+        });
+
+
     });    
 
     describe('TEST TALLIED VOTE', function () {
@@ -415,6 +454,18 @@ contract('Voting', accounts => {
         it('Should see the winningProposalID match the winner', async function () { 
             await votingInstance.tallyVotes({from: owner}); 
             const winningProposalId = await votingInstance.winningProposalID.call({from: owner});
+            const winner = proposals.indexOf(Math.max(...proposals));
+            expect(new BN(winnerProposalId)).to.be.bignumber.equal(new BN(winner));
+        });
+
+        it('Everybody should see the workflowStatus at this stage', async function () { 
+            let workflowStatus = await votingInstance.workflowStatus.call({from: NOT_REGISTERED_ADDR});
+            expect(new BN(workflowStatus)).to.be.bignumber.equal(FOUR);
+        });
+
+        it('Everybody should see the winner by getting the winningProposalID with the correct value', async function () { 
+            await votingInstance.tallyVotes({from: owner}); 
+            const winningProposalId = await votingInstance.winningProposalID.call({from: NOT_REGISTERED_ADDR});
             const winner = proposals.indexOf(Math.max(...proposals));
             expect(new BN(winnerProposalId)).to.be.bignumber.equal(new BN(winner));
         });
