@@ -125,3 +125,8 @@ then :
 ```
 truffle test
 ```
+
+## TEST RESULTS
+
+
+![](https://imgur.com/7EighUT)
