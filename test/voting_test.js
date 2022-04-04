@@ -124,13 +124,13 @@ contract('Voting', accounts => {
             }
         ];
         
-        context("--> Test a natural workflow from the initial status", function () {
+        context("--> Test a natural workflow from the initial status 'RegisteringVoters' ", function () {
             before(async function () {
                 votingInstance = await Voting.new({from:owner});
                 let workflowStatus = await votingInstance.workflowStatus.call({from: owner});
             }); 
             for(let i=1; i <workflowStatus.length;i++) {
-                it('should see an event emitted Workflow Status Change when ' + workflowStatus[i].fName, async function () {
+                it('should see an event emitted "WorkflowStatusChange" when ' + workflowStatus[i].fName, async function () {
                     const findEvent = await workflowStatus[i].fn();
                     expectEvent(findEvent, 'WorkflowStatusChange', {previousStatus: new BN(i-1), newStatus:new BN(i)});      
                 });

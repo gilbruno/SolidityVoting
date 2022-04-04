@@ -43,10 +43,10 @@ Below the description of our tests
 
 ### 1) TEST OF THE NATURAL WORKFLOW STATUS
 The natural workflow begins with an initial status.<br>
-And a specific status must follow.
-There must be a required order for actions.
-That's what we tested.
-The initial process is 'RegisteringVoters'
+And a specific status must follow.<br>
+There must be a required order for actions.<br>
+That's what we tested.<br>
+The initial process is 'RegisteringVoters'.<br>
 We checked that in case of succes, the event _WorkflowStatusChange_ is emitted
 ### 2) TEST OF THE UNNATURAL WORKFLOW STATUS
 Secondly, we tested an unnatural order of workflowstatus.
@@ -66,9 +66,15 @@ we wanted to check that it reverts.
 ✔️ Should see a revert message when a voter that is not the owner add a voter<br>
 ✔️ Owner should be able to add voter<br>
 ✔️ Should see the workflow status unchanged after adding a voter<br>
-✔️ Should not be possible to register a duplicate voter (We test that a voter mus be unique) <br>
+✔️ Should not be possible to register a duplicate voter <br>
+> We check that a voter must be unique <br>
+
 ✔️ Should see that a voter newly created is registered <br>
+> By checking the _isRegistered_ property of the struct _Voter_ <br>
+
 ✔️ Should see that a voter newly created has not voted yet <br>
+> By checking the _hasVoted_ property of the struct _Voter_ <br>
+
 ✔️ Should see that a voter newly created can not vote until the end of the recording voters session <br>
 ✔️ Should see that a voter newly created can not give a proposal until the end of the recording voters session <br>
 
