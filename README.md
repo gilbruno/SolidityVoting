@@ -65,7 +65,7 @@ we wanted to check that it reverts.
 ✔️ Should see an event emitted : _VoterRegistered_ <br>
 ✔️ Should see a revert message when a voter that is not the owner add a voter<br>
 ✔️ Owner should be able to add voter<br>
-✔️ should see the workflow status unchanged after adding a voter<br>
+✔️ Should see the workflow status unchanged after adding a voter<br>
 ✔️ Should not be possible to register a duplicate voter (We test that a voter mus be unique) <br>
 ✔️ Should see that a voter newly created is registered <br>
 ✔️ Should see that a voter newly created has not voted yet <br>
@@ -79,6 +79,8 @@ we wanted to check that it reverts.
 ✔️ Should see a revert when a not registered voter submit a proposal<br>
 ✔️ Should see that a proposal must not be empty. So it's mandatory<br>
 ✔️ Should expect a value for desc of proposal struct <br>
+> We check that the _description_ property of the struct _Proposal_ is corrrectly hydrated after adding a proposal <br>
+
 ✔️ Should expect a new value in the array of proposals <br>
 ✔️ Should see the right workflow status after adding a proposal <br>
 ✔️ Should see that a voter is able to give many proposals <br>
@@ -105,12 +107,12 @@ we wanted to check that it reverts.
 ✔️ Should see an event emitted : _WorkflowStatusChange_ to value _VotesTallied_ <br>
 ✔️ Should see a not owner voter can not vote <br>
 ✔️ Should see the owner can vote without error <br>
-✔️ Should see the winningProposalID state property is not null anymore <br>
 ✔️ Should see the winningProposalID match the winner <br>
 > For this test we hydrate a set of data voters, porposals ans votes. 
 Then we are able to compute our winner in Javascript.
 We compare this computed winner with the winner computed with the smart contract
 and compare with the winnerID <br>
+
 
 ## RUN TESTS
 
@@ -128,5 +130,4 @@ truffle test
 
 ## TEST RESULTS
 
-
-![](https://imgur.com/7EighUT)
+✔️ 64 passing tests
