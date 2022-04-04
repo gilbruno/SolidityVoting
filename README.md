@@ -1,6 +1,6 @@
 # Project Solidity Voting
 
-## Description 
+## Brief Description 
 
 Below is a brief descritption of the project
 A voting smart contract can be simple or complex, depending on the requirements of the elections you wish to support. 
@@ -81,10 +81,11 @@ we wanted to check that it reverts.
 ✔️ Should expect a value for desc of proposal struct <br>
 ✔️ Should expect a new value in the array of proposals <br>
 ✔️ Should see the right workflow status after adding a proposal <br>
-✔️ Should see that a voter is able to give many proposals
+✔️ Should see that a voter is able to give many proposals <br>
 ✔️ Should see that a new proposal should have a vote count equals to 0 <br>
-✔️ Should not see the voter vote for the proposal he gave due to bad workflowstatus 
+✔️ Should not see the voter vote for the proposal he gave due to bad workflowstatus <br>
 > For this test we check that during this process a voter can not vote before the vote session is ended by the owner  <br>
+
 ✔️ Should see the workflow status unchanged after adding a proposal ==> So we check that after adding a proposal the workflowstatus is still _ProposalsRegistrationStarted_<br>
 
 
