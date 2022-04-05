@@ -352,7 +352,7 @@ contract('Voting', accounts => {
         * To test vote process, some conditions are required : 
         *   - Have some voters in the whitelist (we added 3 voters in the whitelist)
         *   - Have some proposals in the proposalsliost (we added 5 proposals in the whitelist)
-        *   - The Workflow Status must be at index= 1 i.e "VoteRegistrationStarded"
+        *   - The Workflow Status must be at index= 3 i.e "VotingSessionStarted"
         */
         beforeEach(async function () {
             votingInstance = await addVoters(3);
