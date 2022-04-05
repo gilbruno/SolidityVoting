@@ -422,6 +422,10 @@ contract('Voting', accounts => {
             expect(new BN(winnerProposalId)).to.be.bignumber.equal(ZERO);
         });
 
+        it('Should see a bug in the smart contract. Test must succeed and must revert with "Proposal not found" message giving id proposal = length of proposals array', async function () { 
+            await (expectRevert(votingInstance.setVote(FOUR, {from:voter1}), "Proposal not found"));
+        });
+
 
     });    
 
