@@ -147,6 +147,9 @@ truffle test
 ## TEST RESULTS
 
 ✔️ 73 passing tests
+✔️ 1 failing test (that reveals a bug in the smart contract)
+
+
 
 ## AUTHOR
 
