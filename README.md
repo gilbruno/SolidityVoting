@@ -130,12 +130,47 @@ and compare with the winnerID <br>
 
 
 
+## PREREQUISITE INSTALLATION
+
+### Install NPM dependencies
+
+```
+npm install
+```
+
+
+### Install Truffle
+
+```
+npm install -g truffle
+```
+
+### Test Truffle Installation
+
+```
+truffle version
+```
+
+### Compile smart contracts
+
+```
+truffle compile
+```
+
+### Install Ganache
+
+```
+npm install ganache --global
+```
+
+
 ## RUN TESTS
 
 Simply execute the 2 commands : 
 
+### Command1 : will launch a local blockchain on your local host
 ```
-ganache-cli
+ganache
 ```
 
 then : 
