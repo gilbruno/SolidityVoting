@@ -3,7 +3,8 @@
 pragma solidity 0.8.13;
 
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
-
+//To compile in Remix
+//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
 contract Voting is Ownable {
 
